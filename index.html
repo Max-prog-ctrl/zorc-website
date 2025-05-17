@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>S●R●C</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function enterSite() {
+      var clickSound = new Audio('assets/click.mp3');
+      clickSound.play();
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 500);
+    }
+  </script>
+</head>
+<body class="splash">
+  <div class="splash-center" onclick="enterSite()">+</div>
+</body>
+</html>
