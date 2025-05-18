@@ -1,41 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-body {
-  margin: 0;
-  padding: 0;
-  color: #00FF99;
-  background: black;
-  font-family: 'VT323', monospace;
-  font-size: 1.4rem;
-  text-shadow: 0 0 3px #00FF99;
-  background-image: radial-gradient(circle at center, #002a22 0%, black 100%);
-  animation: crt-flicker 2s infinite;
+.ghost-cross {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  animation: rotateCross 20s linear infinite;
+  z-index: 10;
+  filter: drop-shadow(0 0 6px #111);
 }
 
-@keyframes crt-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.985; }
+.ghost-cross::before,
+.ghost-cross::after {
+  content: '';
+  position: absolute;
+  transition: background-color 0.3s ease;
+  animation: glitch 2s infinite steps(2, jump-none);
 }
 
-.splash {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ghost-cross::before {
+  width: 100%;
+  height: 20px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
-.splash-cross {
-  width: 180px;
-  height: 180px;
-  background: linear-gradient(to right, #00FF99 45%, transparent 45% 55%, #00FF99 55%),
-              linear-gradient(to bottom, #00FF99 45%, transparent 45% 55%, #00FF99 55%);
-  background-blend-mode: screen;
-  animation: spin 3s linear infinite;
-  filter: drop-shadow(0 0 6px #00FF99);
-  cursor: pointer;
+.ghost-cross::after {
+  width: 20px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Farbvarianten */
+.ghost-cross-gray::before,
+.ghost-cross-gray::after {
+  background-color: #999;
+}
+
+.ghost-cross-red::before,
+.ghost-cross-red::after {
+  background-color: #8b0000;
+}
+
+.ghost-cross-faint::before,
+.ghost-cross-faint::after {
+  background-color: #e0e0e0;
+}
+
+/* Animationen */
+@keyframes rotateCross {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes glitch {
+  0%   { transform: translate(0, 0); opacity: 1; }
+  20%  { transform: translate(-1px, 0); opacity: 0.9; }
+  40%  { transform: translate(1px, 0); opacity: 1; }
+  60%  { transform: translate(-2px, 0); opacity: 0.95; }
+  80%  { transform: translate(2px, 0); opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 1; }
 }
