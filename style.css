@@ -1,19 +1,17 @@
-
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  color: #00FF00;
+  color: #CCCCCC;
   background: black;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
-  text-shadow: 0 0 5px #00FF00;
   background-image: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0) 0px,
-    rgba(0, 255, 0, 0.05) 1px,
-    rgba(0, 0, 0, 0) 2px
+    rgba(255, 255, 255, 0.01) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    rgba(255, 255, 255, 0.01) 2px
   );
   background-size: 100% 3px;
   animation: crt-flicker 2s infinite;
@@ -24,64 +22,29 @@ body {
   50% { opacity: 0.98; }
 }
 
-header h1 {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 2rem;
-  text-shadow: 0 0 15px #00FF00, 0 0 2px #00FF00;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-  margin-top: 3rem;
-}
-
-nav ul li {
-  margin: 1rem 0;
-}
-
-nav ul li a {
-  color: #00FF00;
-  text-decoration: none;
-  font-size: 1.5rem;
-  text-shadow: 0 0 8px #00FF00;
-  transition: all 0.2s ease-in-out;
-}
-
-nav ul li a:hover {
-  color: #9900ff;
-  text-shadow: 0 0 15px #9900ff, 0 0 5px #00ffff;
-}
-
 .splash {
   background: black;
-  color: #00FF00;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
+}
+
+.splash-spin {
+  width: 100px;
+  height: 100px;
+  background: repeating-linear-gradient(
+    to right, #CCCCCC 0 6px, transparent 6px 12px
+  ), repeating-linear-gradient(
+    to bottom, #CCCCCC 0 6px, transparent 6px 12px
+  );
+  background-blend-mode: lighten;
+  animation: rotateCross 1.8s linear infinite;
   cursor: pointer;
-  text-shadow: 0 0 20px #00FF00;
+  box-shadow: 0 0 8px #CCCCCC;
 }
 
-.splash-center {
-  animation: pulse 1.2s infinite alternate;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.05); opacity: 0.9; }
-}
-
-.void {
-  background: black;
-  color: #33ff33;
-  font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-  padding: 2rem;
-  text-shadow: 0 0 5px #33ff33;
-  animation: crt-flicker 3s infinite;
+@keyframes rotateCross {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
