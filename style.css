@@ -3,48 +3,39 @@
 body {
   margin: 0;
   padding: 0;
-  color: #CCCCCC;
+  color: #00FF99;
   background: black;
   font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-  background-image: repeating-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.01) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
-    rgba(255, 255, 255, 0.01) 2px
-  );
-  background-size: 100% 3px;
+  font-size: 1.4rem;
+  text-shadow: 0 0 3px #00FF99;
+  background-image: radial-gradient(circle at center, #002a22 0%, black 100%);
   animation: crt-flicker 2s infinite;
 }
 
 @keyframes crt-flicker {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.98; }
+  50% { opacity: 0.985; }
 }
 
 .splash {
-  background: black;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.splash-spin {
-  width: 100px;
-  height: 100px;
-  background: repeating-linear-gradient(
-    to right, #CCCCCC 0 6px, transparent 6px 12px
-  ), repeating-linear-gradient(
-    to bottom, #CCCCCC 0 6px, transparent 6px 12px
-  );
-  background-blend-mode: lighten;
-  animation: rotateCross 1.8s linear infinite;
+.splash-cross {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(to right, #00FF99 45%, transparent 45% 55%, #00FF99 55%),
+              linear-gradient(to bottom, #00FF99 45%, transparent 45% 55%, #00FF99 55%);
+  background-blend-mode: screen;
+  animation: spin 3s linear infinite;
+  filter: drop-shadow(0 0 6px #00FF99);
   cursor: pointer;
-  box-shadow: 0 0 8px #CCCCCC;
 }
 
-@keyframes rotateCross {
+@keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
